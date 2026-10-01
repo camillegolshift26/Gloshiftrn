@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[PRODUCT NAME] — [BRANDING LINE]</title>
+<meta name="description" content="[PRODUCT NAME] is a pre-launch [CATEGORY] for [SPECIFIC AUDIENCE]. Join the waitlist.">
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --surface: #f2f0ea;
+    --text: #1a1a18;
+    --muted: #5c5b55;
+    --line: #dcd9d0;
+    --accent: #d2481f;        /* the one accent colour: buttons only */
+    --accent-text: #ffffff;
+    --measure: 65ch;
+    --gutter: 16px;
+    --radius: 10px;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141413;
+      --surface: #1e1e1c;
+      --text: #f0eee8;
+      --muted: #a7a59d;
+      --line: #34332f;
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; }
+
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 var(--gutter); }
+  .prose { max-width: var(--measure); }
+  .prose p, .prose li { color: var(--muted); }
+  .prose p:first-child { margin-top: 0; }
+
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  .num {
+    font-size: 13px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 8px;
+  }
+  h1, h2, h3 { line-height: 1.15; letter-spacing: -0.015em; margin: 0 0 16px; }
+  h1 { font-size: clamp(2rem, 7vw, 3.4rem); }
+  h2 { font-size: clamp(1.5rem, 4.5vw, 2.2rem); }
+  h3 { font-size: 1.1rem; margin-bottom: 6px; }
+
+  /* 01 Header */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+  .brand { font-weight: 700; text-decoration: none; white-space: nowrap; }
+  nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 18px; overflow-x: auto; }
+  nav a { text-decoration: none; font-size: 15px; color: var(--muted); white-space: nowrap; }
+  nav a:hover { color: var(--text); }
+  @media (max-width: 640px) { nav .optional { display: none; } }
+
+  /* 02 Hero */
+  .hero { border-top: 0; padding-top: 48px; }
+  .hero .lede { font-size: 1.15rem; color: var(--muted); max-width: var(--measure); margin: 0 0 28px; }
+  .hero .shot { margin-top: 40px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
+
+  /* Waitlist form (used twice, identical) */
+  .waitlist { max-width: 480px; }
+  .waitlist .row { display: flex; flex-direction: column; gap: 10px; }
+  @media (min-width: 520px) { .waitlist .row { flex-direction: row; } }
+  .waitlist label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .waitlist input[type="email"] {
+    flex: 1; min-width: 0;
+    font: inherit; padding: 14px 16px;
+    border: 1px solid var(--line); border-radius: var(--radius);
+    background: var(--bg); color: var(--text);
+  }
+  .waitlist input[type="email"]:focus { outline: 2px solid var(--text); outline-offset: 1px; }
+  .waitlist button {
+    font: inherit; font-weight: 600;
+    padding: 14px 22px; border: 0; border-radius: var(--radius);
+    background: var(--accent); color: var(--accent-text);
+    cursor: pointer; white-space: nowrap;
+  }
+  .waitlist button:disabled { opacity: .6; cursor: progress; }
+  .waitlist .note { font-size: 14px; color: var(--muted); margin: 10px 0 0; }
+  .waitlist .error { font-size: 14px; margin: 10px 0 0; }
+  .confirm { max-width: 480px; padding: 18px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+  .confirm p { margin: 0; }
+
+  /* Lists and grids */
+  .steps { counter-reset: step; list-style: none; padding: 0; margin: 0; display: grid; gap: 24px; }
+  .steps li { counter-increment: step; max-width: var(--measure); }
+  .steps li::before { content: counter(step, decimal-leading-zero); display: block; font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+  .split { display: grid; gap: 32px; }
+  @media (min-width: 760px) { .split { grid-template-columns: 1fr 1fr; } }
+  .split ul { padding-left: 20px; margin: 0; }
+  .split li { color: var(--muted); margin-bottom: 8px; max-width: var(--measure); }
+
+  /* 07 About */
+  .about { display: grid; gap: 28px; align-items: start; }
+  @media (min-width: 760px) { .about { grid-template-columns: 240px 1fr; } }
+  .about img { width: 240px; max-width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius); background: var(--surface); }
+
+  /* 09 Proof */
+  blockquote { margin: 0 0 24px; padding-left: 16px; border-left: 2px solid var(--line); max-width: var(--measure); }
+  blockquote p { margin: 0 0 6px; color: var(--text); }
+  blockquote cite { font-style: normal; font-size: 14px; color: var(--muted); }
+
+  /* 11 Waitlist block */
+  .final { background: var(--surface); }
+
+  /* 12 Footer */
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: 14px; color: var(--muted); }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<!-- 01 Header -->
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">[PRODUCT NAME]</a>
+    <nav aria-label="On this page">
+      <ul>
+        <li><a href="#problem" class="optional">Problem</a></li>
+        <li><a href="#what">What it is</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#about" class="optional">About</a></li>
+        <li><a href="#join">Join</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 02 Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="num">[BRANDING LINE]</p>
+      <h1>[HEADLINE — the outcome, in your words]</h1>
+      <p class="lede">[PRODUCT NAME] is a [CATEGORY] for [SPECIFIC AUDIENCE]. [One sentence on what changes for them.]</p>
+
+      <form class="waitlist" action="/api/waitlist" method="post" novalidate>
+        <div class="row">
+          <label for="email-hero">Email address</label>
+          <input id="email-hero" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+          <button type="submit">Join the waitlist</button>
+        </div>
+        <p class="note">[What they get by joining, one line.] No spam.</p>
+      </form>
+
+      <figure class="shot">
+        <img src="images/screenshot.png" alt="[PRODUCT NAME] product screenshot" width="1600" height="1000">
+      </figure>
+    </div>
+  </section>
+
+  <!-- 03 The problem -->
+  <section id="problem">
+    <div class="wrap prose">
+      <p class="num">The problem</p>
+      <h2>[The problem, as your audience would say it]</h2>
+      <p>[Pain point 1, from your ICP.]</p>
+      <p>[Pain point 2, what they've tried and why it falls short.]</p>
+    </div>
+  </section>
+
+  <!-- 04 What it is -->
+  <section id="what">
+    <div class="wrap prose">
+      <p class="num">What it is</p>
+      <h2>[One-line definition of PRODUCT NAME]</h2>
+      <p>[Two or three sentences describing the product.]</p>
+    </div>
+  </section>
+
+  <!-- 05 How it works -->
+  <section id="how">
+    <div class="wrap">
+      <p class="num">How it works</p>
+      <h2>[How it works headline]</h2>
+      <ol class="steps">
+        <li><h3>[Step one]</h3><p class="prose">[Short description.]</p></li>
+        <li><h3>[Step two]</h3><p class="prose">[Short description.]</p></li>
+        <li><h3>[Step three]</h3><p class="prose">[Short description.]</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 06 Who it is for and not for -->
+  <section id="who">
+    <div class="wrap">
+      <p class="num">Who it's for</p>
+      <h2>Built for [SPECIFIC AUDIENCE]</h2>
+      <div class="split">
+        <div>
+          <h3>For you if</h3>
+          <ul>
+            <li>[ICP trait 1]</li>
+            <li>[ICP trait 2]</li>
+            <li>[ICP trait 3]</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Not for you if</h3>
+          <ul>
+            <li>[Anti-ICP trait 1]</li>
+            <li>[Anti-ICP trait 2]</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 About -->
+  <section id="about">
+    <div class="wrap about">
+      <img src="images/founder.jpg" alt="[FOUNDER NAME], founder of [PRODUCT NAME]" width="480" height="480">
+      <div class="prose">
+        <p class="num">About</p>
+        <h2>[FOUNDER NAME]</h2>
+        <p>[Your story: who you are and why you started this.]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 Why you -->
+  <section id="why">
+    <div class="wrap prose">
+      <p class="num">Why me</p>
+      <h2>[Why you're the one to build this]</h2>
+      <p>[Your unfair advantage: experience, access, insight.]</p>
+    </div>
+  </section>
+
+  <!-- 09 Proof -->
+  <section id="proof">
+    <div class="wrap">
+      <p class="num">Proof</p>
+      <h2>[Proof headline]</h2>
+      <blockquote>
+        <p>“[Quote or result, real, from your milestones]”</p>
+        <cite>— [Name, role]</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- 10 What happens when you join -->
+  <section id="next">
+    <div class="wrap">
+      <p class="num">What happens when you join</p>
+      <h2>[What happens next]</h2>
+      <ol class="steps">
+        <li><h3>[Right away]</h3><p class="prose">[e.g. confirmation email]</p></li>
+        <li><h3>[Before launch]</h3><p class="prose">[What they'll hear from you, and how often]</p></li>
+        <li><h3>[At launch — DATE from milestones]</h3><p class="prose">[What waitlist members get]</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 11 Waitlist block -->
+  <section id="join" class="final">
+    <div class="wrap">
+      <p class="num">Join</p>
+      <h2>[Closing line, in your words]</h2>
+
+      <form class="waitlist" action="/api/waitlist" method="post" novalidate>
+        <div class="row">
+          <label for="email-join">Email address</label>
+          <input id="email-join" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+          <button type="submit">Join the waitlist</button>
+        </div>
+        <p class="note">[What they get by joining, one line.] No spam.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- 12 Footer -->
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> [PRODUCT NAME]</span>
+    <span>[BRANDING LINE]</span>
+    <a href="mailto:[CONTACT EMAIL]">[CONTACT EMAIL]</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.querySelectorAll('form.waitlist').forEach(function (form) {
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var input = form.querySelector('input[name="email"]');
+      var button = form.querySelector('button');
+      var old = form.querySelector('.error');
+      if (old) old.remove();
+
+      var email = input.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        return showError('Please enter a valid email address.');
+      }
+
+      button.disabled = true;
+      button.textContent = 'Joining…';
+      try {
+        var res = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email })
+        });
+        if (!res.ok) throw new Error('Request failed: ' + res.status);
+        var done = document.createElement('div');
+        done.className = 'confirm';
+        done.setAttribute('role', 'status');
+        done.innerHTML = '<p><strong>You’re on the list.</strong> [Confirmation message, what happens next.]</p>';
+        form.replaceWith(done);
+      } catch (err) {
+        button.disabled = false;
+        button.textContent = 'Join the waitlist';
+        showError('Something went wrong. Please try again.');
+      }
+
+      function showError(msg) {
+        var p = document.createElement('p');
+        p.className = 'error';
+        p.setAttribute('role', 'alert');
+        p.textContent = msg;
+        form.appendChild(p);
+      }
+    });
+  });
+</script>
+</body>
+</html>
