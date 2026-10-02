@@ -3,79 +3,169 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>[PRODUCT NAME] — [BRANDING LINE]</title>
-<meta name="description" content="[PRODUCT NAME] is a pre-launch [CATEGORY] for [SPECIFIC AUDIENCE]. Join the waitlist.">
+<title>GloShift — HR built for the business of beauty</title>
+<meta name="description" content="GloShift is onboarding and compliance tracking built for aesthetic medicine practices. Join the waitlist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #fbfaf7;
-    --surface: #f2f0ea;
-    --text: #1a1a18;
-    --muted: #5c5b55;
-    --line: #dcd9d0;
-    --accent: #d2481f;        /* the one accent colour: buttons only */
-    --accent-text: #ffffff;
-    --measure: 65ch;
+    --bg: #faf9f7;
+    --surface: #ffffff;
+    --surface-2: #f6f4f1;
+    --text: #1f1c19;
+    --muted: #5e5852;
+    --soft: #8a837c;
+    --line: #e8e4de;
+    --accent: #e08a62;          /* buttons */
+    --accent-hover: #d67a50;
+    --accent-text: #1f1c19;
+    --rust: #a5533a;            /* italic headline, eyebrow */
+    --ok: #4f7a5a;
+    --warn: #b0443a;
+    --warn-bg: #fbe9e6;
+    --glow: rgba(240, 190, 160, .35);
+    --serif: "Cormorant Garamond", "Cormorant", Georgia, serif;
+    --sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --measure: 62ch;
     --gutter: 16px;
-    --radius: 10px;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --radius: 8px;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #141413;
-      --surface: #1e1e1c;
-      --text: #f0eee8;
-      --muted: #a7a59d;
-      --line: #34332f;
+      --bg: #151311;
+      --surface: #1d1a17;
+      --surface-2: #24201c;
+      --text: #f2ede7;
+      --muted: #b5ada4;
+      --soft: #8f877e;
+      --line: #35302a;
+      --rust: #e09a7c;
+      --ok: #8cc29a;
+      --warn: #f0a196;
+      --warn-bg: #3a2320;
+      --glow: rgba(224, 138, 98, .12);
     }
   }
   *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
   body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
+    font-family: var(--sans);
     font-size: 17px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
   img { max-width: 100%; height: auto; display: block; }
   a { color: inherit; }
 
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 var(--gutter); }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
+  @media (min-width: 760px) { .wrap { padding: 0 32px; } }
   .prose { max-width: var(--measure); }
   .prose p, .prose li { color: var(--muted); }
   .prose p:first-child { margin-top: 0; }
 
-  section { padding: 56px 0; border-top: 1px solid var(--line); }
-  .num {
-    font-size: 13px; letter-spacing: .08em; text-transform: uppercase;
-    color: var(--muted); margin: 0 0 8px;
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    font: inherit; font-weight: 500; font-size: 16px;
+    padding: 14px 28px; border-radius: var(--radius);
+    text-decoration: none; cursor: pointer; white-space: nowrap;
+    border: 1px solid transparent; transition: background .15s, border-color .15s;
   }
-  h1, h2, h3 { line-height: 1.15; letter-spacing: -0.015em; margin: 0 0 16px; }
-  h1 { font-size: clamp(2rem, 7vw, 3.4rem); }
-  h2 { font-size: clamp(1.5rem, 4.5vw, 2.2rem); }
-  h3 { font-size: 1.1rem; margin-bottom: 6px; }
+  .btn-primary { background: var(--accent); color: var(--accent-text); }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-ghost { background: var(--surface); color: var(--text); border-color: var(--line); }
+  .btn-ghost:hover { border-color: var(--soft); }
 
-  /* 01 Header */
+  .eyebrow {
+    display: flex; align-items: center; gap: 14px;
+    font-size: 13px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--rust); margin: 0 0 32px;
+  }
+  .eyebrow::before { content: ""; width: 40px; height: 1px; background: currentColor; flex: none; }
+
+  section { padding: 88px 0; border-top: 1px solid var(--line); }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 20px; }
+  h2 { font-size: clamp(2rem, 5vw, 3rem); }
+  h2 em, h1 em { color: var(--rust); }
+  h3 { font-size: 1.5rem; line-height: 1.2; margin-bottom: 8px; }
+
+  /* Header */
   header {
     position: sticky; top: 0; z-index: 10;
-    background: var(--bg);
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--line);
   }
-  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
-  .brand { font-weight: 700; text-decoration: none; white-space: nowrap; }
-  nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 18px; overflow-x: auto; }
-  nav a { text-decoration: none; font-size: 15px; color: var(--muted); white-space: nowrap; }
-  nav a:hover { color: var(--text); }
-  @media (max-width: 640px) { nav .optional { display: none; } }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 16px; }
+  .brand { display: inline-flex; align-items: baseline; gap: 6px; text-decoration: none; white-space: nowrap; font-size: 26px; line-height: 1; }
+  .brand .glo { font-family: var(--serif); color: var(--accent); font-weight: 400; font-size: 28px; }
+  .brand .shift { font-family: var(--sans); font-weight: 600; letter-spacing: -0.02em; }
+  .brand .spark { color: var(--accent); font-size: 18px; align-self: center; }
+  nav { display: flex; align-items: center; gap: 32px; }
+  nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 32px; }
+  nav ul a { text-decoration: none; font-size: 15px; color: var(--muted); white-space: nowrap; }
+  nav ul a:hover { color: var(--text); }
+  nav .btn { padding: 10px 22px; font-size: 15px; }
+  @media (max-width: 860px) { nav ul { display: none; } }
 
-  /* 02 Hero */
-  .hero { border-top: 0; padding-top: 48px; }
-  .hero .lede { font-size: 1.15rem; color: var(--muted); max-width: var(--measure); margin: 0 0 28px; }
-  .hero .shot { margin-top: 40px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
+  /* Hero */
+  .hero { position: relative; border-top: 0; padding: 56px 0 72px; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0 0 auto auto; width: 60%; height: 520px; pointer-events: none;
+    background: radial-gradient(ellipse at 80% 0%, var(--glow), transparent 65%);
+  }
+  .hero-grid { position: relative; display: grid; gap: 56px; align-items: start; }
+  @media (min-width: 980px) { .hero-grid { grid-template-columns: 1.1fr 1fr; gap: 56px; } }
+  .hero h1 { font-size: clamp(3rem, 6.2vw, 5.6rem); line-height: 1; margin-bottom: 36px; }
+  .hero h1 em { display: block; font-style: italic; }
+  .hero .lede { font-size: clamp(1.1rem, 2vw, 1.3rem); line-height: 1.7; color: var(--muted); max-width: 34em; margin: 0 0 40px; }
+  .hero .ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 64px; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 520px; padding-top: 40px; border-top: 1px solid var(--line); margin: 0; }
+  .stats div { margin: 0; }
+  .stats dt { font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 3.4rem); line-height: 1; margin-bottom: 10px; }
+  .stats dd { margin: 0; color: var(--soft); font-size: 15px; line-height: 1.4; }
 
-  /* Waitlist form (used twice, identical) */
-  .waitlist { max-width: 480px; }
+  /* Hero card */
+  .card-stack { position: relative; padding-bottom: 28px; }
+  .card-stack::after {
+    content: ""; position: absolute; left: 5%; right: 5%; bottom: 0; height: 60px; z-index: 0;
+    background: var(--surface-2); border: 1px solid var(--line); border-radius: 22px;
+  }
+  .card {
+    position: relative; z-index: 1;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 22px;
+    padding: 36px clamp(20px, 3.5vw, 40px) 28px;
+    box-shadow: 0 30px 60px -30px rgba(60, 40, 25, .18);
+  }
+  .card-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 28px; }
+  .label { font-size: 12px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--soft); }
+  .tag { font-size: 12px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; padding: 6px 14px; border: 1px solid var(--line); border-radius: 6px; color: var(--muted); }
+  .person { display: flex; align-items: center; gap: 18px; margin-bottom: 30px; }
+  .avatar {
+    width: 60px; height: 60px; border-radius: 50%; flex: none;
+    display: grid; place-items: center;
+    background: linear-gradient(135deg, #f1d9c9, #e3b79d); color: #6b3a26;
+    font-family: var(--serif); font-size: 24px;
+  }
+  .person .name { font-family: var(--serif); font-size: 26px; line-height: 1.1; margin: 0 0 4px; }
+  .person .role { font-size: 15px; color: var(--muted); margin: 0; }
+  .rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .rows li {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    padding: 18px 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-2);
+    font-size: 16px;
+  }
+  .status { font-size: 12px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--ok); white-space: nowrap; }
+  .status.bad { color: var(--warn); background: var(--warn-bg); padding: 5px 12px; border-radius: 999px; }
+  .card-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); }
+  .card-foot .status { color: var(--warn); }
+
+  /* Waitlist form */
+  .waitlist { max-width: 520px; }
   .waitlist .row { display: flex; flex-direction: column; gap: 10px; }
   @media (min-width: 520px) { .waitlist .row { flex-direction: row; } }
   .waitlist label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
@@ -83,218 +173,229 @@
     flex: 1; min-width: 0;
     font: inherit; padding: 14px 16px;
     border: 1px solid var(--line); border-radius: var(--radius);
-    background: var(--bg); color: var(--text);
+    background: var(--surface); color: var(--text);
   }
-  .waitlist input[type="email"]:focus { outline: 2px solid var(--text); outline-offset: 1px; }
-  .waitlist button {
-    font: inherit; font-weight: 600;
-    padding: 14px 22px; border: 0; border-radius: var(--radius);
-    background: var(--accent); color: var(--accent-text);
-    cursor: pointer; white-space: nowrap;
-  }
+  .waitlist input[type="email"]:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .waitlist button { border: 0; }
   .waitlist button:disabled { opacity: .6; cursor: progress; }
-  .waitlist .note { font-size: 14px; color: var(--muted); margin: 10px 0 0; }
-  .waitlist .error { font-size: 14px; margin: 10px 0 0; }
-  .confirm { max-width: 480px; padding: 18px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+  .waitlist .note { font-size: 14px; color: var(--soft); margin: 12px 0 0; }
+  .waitlist .error { font-size: 14px; color: var(--warn); margin: 10px 0 0; }
+  .confirm { max-width: 520px; padding: 18px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
   .confirm p { margin: 0; }
 
   /* Lists and grids */
-  .steps { counter-reset: step; list-style: none; padding: 0; margin: 0; display: grid; gap: 24px; }
-  .steps li { counter-increment: step; max-width: var(--measure); }
-  .steps li::before { content: counter(step, decimal-leading-zero); display: block; font-size: 13px; color: var(--muted); margin-bottom: 4px; }
-  .split { display: grid; gap: 32px; }
+  .cap-grid { display: grid; gap: 16px; margin-top: 48px; }
+  @media (min-width: 760px) { .cap-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1040px) { .cap-grid { grid-template-columns: repeat(3, 1fr); } }
+  .cap { padding: 28px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+  .cap p { margin: 0; color: var(--muted); font-size: 16px; }
+  .steps { counter-reset: step; list-style: none; padding: 0; margin: 48px 0 0; display: grid; gap: 32px; }
+  @media (min-width: 860px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+  .steps li { counter-increment: step; padding-top: 24px; border-top: 1px solid var(--line); }
+  .steps li::before { content: counter(step, decimal-leading-zero); display: block; font-size: 13px; letter-spacing: .18em; color: var(--rust); margin-bottom: 12px; }
+  .steps p { margin: 0; color: var(--muted); font-size: 16px; }
+  .split { display: grid; gap: 32px; margin-top: 40px; }
   @media (min-width: 760px) { .split { grid-template-columns: 1fr 1fr; } }
   .split ul { padding-left: 20px; margin: 0; }
-  .split li { color: var(--muted); margin-bottom: 8px; max-width: var(--measure); }
+  .split li { color: var(--muted); margin-bottom: 10px; }
 
-  /* 07 About */
-  .about { display: grid; gap: 28px; align-items: start; }
-  @media (min-width: 760px) { .about { grid-template-columns: 240px 1fr; } }
-  .about img { width: 240px; max-width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius); background: var(--surface); }
+  /* Story */
+  .story { display: grid; gap: 40px; align-items: start; }
+  @media (min-width: 860px) { .story { grid-template-columns: 0.8fr 1.2fr; gap: 72px; } }
+  .story .sig { margin-top: 28px; font-family: var(--serif); font-size: 22px; }
+  .story .sig span { display: block; font-family: var(--sans); font-size: 14px; color: var(--soft); }
 
-  /* 09 Proof */
-  blockquote { margin: 0 0 24px; padding-left: 16px; border-left: 2px solid var(--line); max-width: var(--measure); }
-  blockquote p { margin: 0 0 6px; color: var(--text); }
-  blockquote cite { font-style: normal; font-size: 14px; color: var(--muted); }
+  .final { background: var(--surface-2); }
+  .final .wrap { text-align: left; }
 
-  /* 11 Waitlist block */
-  .final { background: var(--surface); }
-
-  /* 12 Footer */
-  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: 14px; color: var(--muted); }
-  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; }
+  /* Footer */
+  footer { border-top: 1px solid var(--line); padding: 32px 0 44px; font-size: 14px; color: var(--soft); }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; }
+  footer .brand { font-size: 20px; }
+  footer .brand .glo { font-size: 22px; }
 </style>
 </head>
 <body>
 
-<!-- 01 Header -->
 <header>
   <div class="wrap">
-    <a class="brand" href="#top">[PRODUCT NAME]</a>
-    <nav aria-label="On this page">
+    <a class="brand" href="#top" aria-label="GloShift home"><span class="glo">Glo</span><span class="shift">Shift</span><span class="spark" aria-hidden="true">✦</span></a>
+    <nav aria-label="Main">
       <ul>
-        <li><a href="#problem" class="optional">Problem</a></li>
-        <li><a href="#what">What it is</a></li>
+        <li><a href="#story">Our story</a></li>
+        <li><a href="#capabilities">Capabilities</a></li>
         <li><a href="#how">How it works</a></li>
-        <li><a href="#about" class="optional">About</a></li>
-        <li><a href="#join">Join</a></li>
       </ul>
+      <a class="btn btn-primary" href="#join">Join the waitlist</a>
     </nav>
   </div>
 </header>
 
 <main id="top">
 
-  <!-- 02 Hero -->
+  <!-- Hero -->
   <section class="hero">
-    <div class="wrap">
-      <p class="num">[BRANDING LINE]</p>
-      <h1>[HEADLINE — the outcome, in your words]</h1>
-      <p class="lede">[PRODUCT NAME] is a [CATEGORY] for [SPECIFIC AUDIENCE]. [One sentence on what changes for them.]</p>
-
-      <form class="waitlist" action="/api/waitlist" method="post" novalidate>
-        <div class="row">
-          <label for="email-hero">Email address</label>
-          <input id="email-hero" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
-          <button type="submit">Join the waitlist</button>
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">HR built for the business of beauty</p>
+        <h1>The people side of <em>Aesthetic Medicine.</em></h1>
+        <p class="lede">GloShift is onboarding and compliance tracking built for aesthetic practices. Add a new hire once, and their licenses, trainings, renewal dates, and medical director sign-offs are organized and tracked from day one.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#join">Join the waitlist</a>
+          <a class="btn btn-ghost" href="#story">Read the story</a>
         </div>
-        <p class="note">[What they get by joining, one line.] No spam.</p>
-      </form>
+        <dl class="stats">
+          <div><dt>14+</dt><dd>Documents tracked per hire</dd></div>
+          <div><dt>1</dt><dd>Source of truth</dd></div>
+          <div><dt>0</dt><dd>Lost to inboxes</dd></div>
+        </dl>
+      </div>
 
-      <figure class="shot">
-        <img src="images/screenshot.png" alt="[PRODUCT NAME] product screenshot" width="1600" height="1000">
-      </figure>
+      <div class="card-stack" aria-label="Example staff compliance record">
+        <div class="card">
+          <div class="card-top">
+            <span class="label">Clinician profile</span>
+            <span class="tag">Sample</span>
+          </div>
+          <div class="person">
+            <div class="avatar" aria-hidden="true">AL</div>
+            <div>
+              <p class="name">Avery Lin, NP</p>
+              <p class="role">Nurse Practitioner · Injector</p>
+            </div>
+          </div>
+          <ul class="rows">
+            <li><span>Renewal deadlines</span><span class="status">On track</span></li>
+            <li><span>Onboarding &amp; hiring</span><span class="status">3 complete</span></li>
+            <li><span>Workplace compliance</span><span class="status">6 / 6</span></li>
+            <li><span>BLS certification</span><span class="status bad">Expired</span></li>
+            <li><span>State-required notices</span><span class="status">4 complete</span></li>
+          </ul>
+          <div class="card-foot">
+            <span>Needs attention</span>
+            <span class="status">1 item</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- 03 The problem -->
+  <!-- Problem -->
   <section id="problem">
     <div class="wrap prose">
-      <p class="num">The problem</p>
-      <h2>[The problem, as your audience would say it]</h2>
-      <p>[Pain point 1, from your ICP.]</p>
-      <p>[Pain point 2, what they've tried and why it falls short.]</p>
+      <p class="eyebrow">The problem</p>
+      <h2>Compliance in aesthetics lives in <em>too many places.</em></h2>
+      <p>A new injector starts Monday. Her license is in an email thread, her BLS card is a photo on someone's phone, and the medical director's sign-off is a PDF nobody can find. Multiply that by every provider, every renewal, every state requirement.</p>
+      <p>Generic HR software wasn't built for medical spas, and spreadsheets don't send reminders. The gaps only show up when an inspector, an insurer, or a lapsed certification finds them first.</p>
     </div>
   </section>
 
-  <!-- 04 What it is -->
-  <section id="what">
-    <div class="wrap prose">
-      <p class="num">What it is</p>
-      <h2>[One-line definition of PRODUCT NAME]</h2>
-      <p>[Two or three sentences describing the product.]</p>
+  <!-- Capabilities -->
+  <section id="capabilities">
+    <div class="wrap">
+      <p class="eyebrow">Capabilities</p>
+      <h2>Everything a new hire needs, <em>in one record.</em></h2>
+      <div class="cap-grid">
+        <div class="cap"><h3>Onboarding checklists</h3><p>Role-specific steps for injectors, aestheticians, and front desk, so nothing is skipped on day one.</p></div>
+        <div class="cap"><h3>License &amp; certification tracking</h3><p>RN, NP, PA, BLS, and device trainings stored with their expiration dates and flagged before they lapse.</p></div>
+        <div class="cap"><h3>Medical director sign-offs</h3><p>Collect and store standing orders, delegations, and competency sign-offs alongside each provider.</p></div>
+        <div class="cap"><h3>Workplace compliance</h3><p>Required policies, acknowledgments, and trainings, with a clear view of who has completed what.</p></div>
+        <div class="cap"><h3>State requirements</h3><p>Keep state-mandated notices and pamphlets on file and acknowledged for every employee.</p></div>
+        <div class="cap"><h3>Attention at a glance</h3><p>One view of what's incomplete, expiring, or overdue across your whole team.</p></div>
+      </div>
     </div>
   </section>
 
-  <!-- 05 How it works -->
+  <!-- How it works -->
   <section id="how">
     <div class="wrap">
-      <p class="num">How it works</p>
-      <h2>[How it works headline]</h2>
+      <p class="eyebrow">How it works</p>
+      <h2>From offer letter to <em>fully compliant.</em></h2>
       <ol class="steps">
-        <li><h3>[Step one]</h3><p class="prose">[Short description.]</p></li>
-        <li><h3>[Step two]</h3><p class="prose">[Short description.]</p></li>
-        <li><h3>[Step three]</h3><p class="prose">[Short description.]</p></li>
+        <li><h3>Add your team member</h3><p>Enter their role and start date. GloShift builds the checklist that role requires.</p></li>
+        <li><h3>Collect the documents</h3><p>Licenses, certifications, trainings, and sign-offs are uploaded once and stored in their record.</p></li>
+        <li><h3>Stay ahead of renewals</h3><p>GloShift tracks every expiration date and tells you what needs attention before it becomes a problem.</p></li>
       </ol>
     </div>
   </section>
 
-  <!-- 06 Who it is for and not for -->
+  <!-- Who it's for -->
   <section id="who">
     <div class="wrap">
-      <p class="num">Who it's for</p>
-      <h2>Built for [SPECIFIC AUDIENCE]</h2>
+      <p class="eyebrow">Who it's for</p>
+      <h2>Built for <em>aesthetic practices.</em></h2>
       <div class="split">
         <div>
           <h3>For you if</h3>
           <ul>
-            <li>[ICP trait 1]</li>
-            <li>[ICP trait 2]</li>
-            <li>[ICP trait 3]</li>
+            <li>You own or manage a med spa, aesthetic clinic, or injectables practice</li>
+            <li>You employ RNs, NPs, PAs, or aestheticians with licenses and certifications to keep current</li>
+            <li>Onboarding and compliance currently live in email, paper files, and spreadsheets</li>
           </ul>
         </div>
         <div>
           <h3>Not for you if</h3>
           <ul>
-            <li>[Anti-ICP trait 1]</li>
-            <li>[Anti-ICP trait 2]</li>
+            <li>You need a full payroll or benefits platform</li>
+            <li>You're a hospital or large health system with an existing credentialing department</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 07 About -->
-  <section id="about">
-    <div class="wrap about">
-      <img src="images/founder.jpg" alt="[FOUNDER NAME], founder of [PRODUCT NAME]" width="480" height="480">
+  <!-- Story -->
+  <section id="story">
+    <div class="wrap story">
+      <div>
+        <p class="eyebrow">Our story</p>
+        <h2>Built by a nurse who's <em>seen the gaps.</em></h2>
+      </div>
       <div class="prose">
-        <p class="num">About</p>
-        <h2>[FOUNDER NAME]</h2>
-        <p>[Your story: who you are and why you started this.]</p>
+        <p>I'm Camille Colapinto, a BSN-prepared RN with nine years in aesthetic medicine. For four of those years I was a national clinical educator, training practices across the country on injectables and devices.</p>
+        <p>Walking into clinic after clinic, I saw the same thing: talented teams, and compliance held together by memory and good intentions. Expired certifications, missing sign-offs, onboarding that depended on whoever happened to be at the front desk.</p>
+        <p>GloShift is the system I wished every practice had. It's built around how aesthetic medicine actually works, by someone who has worked in it.</p>
+        <p class="sig">Camille Colapinto, RN, BSN<span>Founder, GloShift</span></p>
       </div>
     </div>
   </section>
 
-  <!-- 08 Why you -->
-  <section id="why">
-    <div class="wrap prose">
-      <p class="num">Why me</p>
-      <h2>[Why you're the one to build this]</h2>
-      <p>[Your unfair advantage: experience, access, insight.]</p>
-    </div>
-  </section>
-
-  <!-- 09 Proof -->
-  <section id="proof">
-    <div class="wrap">
-      <p class="num">Proof</p>
-      <h2>[Proof headline]</h2>
-      <blockquote>
-        <p>“[Quote or result, real, from your milestones]”</p>
-        <cite>— [Name, role]</cite>
-      </blockquote>
-    </div>
-  </section>
-
-  <!-- 10 What happens when you join -->
+  <!-- What happens when you join -->
   <section id="next">
     <div class="wrap">
-      <p class="num">What happens when you join</p>
-      <h2>[What happens next]</h2>
+      <p class="eyebrow">What happens when you join</p>
+      <h2>Early access, <em>shaped by you.</em></h2>
       <ol class="steps">
-        <li><h3>[Right away]</h3><p class="prose">[e.g. confirmation email]</p></li>
-        <li><h3>[Before launch]</h3><p class="prose">[What they'll hear from you, and how often]</p></li>
-        <li><h3>[At launch — DATE from milestones]</h3><p class="prose">[What waitlist members get]</p></li>
+        <li><h3>Right away</h3><p>You'll get a confirmation email so you know you're on the list.</p></li>
+        <li><h3>Before launch</h3><p>Occasional updates on what we're building, plus a chance to tell us what your practice needs most.</p></li>
+        <li><h3>At launch</h3><p>Waitlist members are the first invited in.</p></li>
       </ol>
     </div>
   </section>
 
-  <!-- 11 Waitlist block -->
+  <!-- Waitlist -->
   <section id="join" class="final">
     <div class="wrap">
-      <p class="num">Join</p>
-      <h2>[Closing line, in your words]</h2>
-
+      <p class="eyebrow">Join the waitlist</p>
+      <h2>Give your team the <em>structure it deserves.</em></h2>
       <form class="waitlist" action="/api/waitlist" method="post" novalidate>
         <div class="row">
           <label for="email-join">Email address</label>
-          <input id="email-join" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
-          <button type="submit">Join the waitlist</button>
+          <input id="email-join" type="email" name="email" placeholder="you@yourpractice.com" autocomplete="email" required>
+          <button class="btn btn-primary" type="submit">Join the waitlist</button>
         </div>
-        <p class="note">[What they get by joining, one line.] No spam.</p>
+        <p class="note">Be first in line when GloShift opens. No spam.</p>
       </form>
     </div>
   </section>
 
 </main>
 
-<!-- 12 Footer -->
 <footer>
   <div class="wrap">
-    <span>© <span id="year">2026</span> [PRODUCT NAME]</span>
-    <span>[BRANDING LINE]</span>
-    <a href="mailto:[CONTACT EMAIL]">[CONTACT EMAIL]</a>
+    <a class="brand" href="#top" aria-label="GloShift home"><span class="glo">Glo</span><span class="shift">Shift</span><span class="spark" aria-hidden="true">✦</span></a>
+    <span>HR built for the business of beauty</span>
+    <span>© <span id="year">2026</span> GloShift · <a href="mailto:camille@gloshiftrn.com">camille@gloshiftrn.com</a></span>
   </div>
 </footer>
 
@@ -326,7 +427,7 @@
         var done = document.createElement('div');
         done.className = 'confirm';
         done.setAttribute('role', 'status');
-        done.innerHTML = '<p><strong>You’re on the list.</strong> [Confirmation message, what happens next.]</p>';
+        done.innerHTML = '<p><strong>You’re on the list.</strong> Check your inbox for a confirmation. We’ll be in touch before launch.</p>';
         form.replaceWith(done);
       } catch (err) {
         button.disabled = false;
