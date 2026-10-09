@@ -14,6 +14,8 @@
     --line: #dcd9d0;
     --accent: #d2481f;        /* the one accent colour: buttons only */
     --accent-text: #ffffff;
+    --primary: #F38962;       /* hero arches */
+    --arch-opacity: .5;       /* tweak to taste */
     --measure: 65ch;
     --gutter: 16px;
     --radius: 10px;
@@ -73,6 +75,24 @@
   .hero { border-top: 0; padding-top: 48px; }
   .hero .lede { font-size: 1.15rem; color: var(--muted); max-width: var(--measure); margin: 0 0 28px; }
   .hero .shot { margin-top: 40px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
+  .hero .wrap { position: relative; }
+  .hero-top { position: relative; }
+  .hero-top > :not(.arches) { position: relative; z-index: 1; }
+
+  /* Hero arches: three filled arches, the centre one tallest and in front */
+  .arches {
+    position: absolute; right: 0; bottom: -40px; z-index: 0;
+    width: min(420px, 70%); height: calc(100% + 40px);
+    pointer-events: none;
+  }
+  .arch {
+    position: absolute; bottom: 0;
+    background: var(--primary); opacity: var(--arch-opacity);
+    border-radius: 999px 999px 0 0;
+  }
+  .arch--left   { left: 0;  width: 38%; height: 62%; }
+  .arch--right  { right: 0; width: 38%; height: 78%; }
+  .arch--center { left: 50%; width: 44%; height: 100%; transform: translateX(-50%); z-index: 1; }
 
   /* Waitlist form (used twice, identical) */
   .waitlist { max-width: 480px; }
@@ -148,6 +168,12 @@
   <!-- 02 Hero -->
   <section class="hero">
     <div class="wrap">
+      <div class="hero-top">
+      <div class="arches" aria-hidden="true">
+        <span class="arch arch--left"></span>
+        <span class="arch arch--right"></span>
+        <span class="arch arch--center"></span>
+      </div>
       <p class="num">[BRANDING LINE]</p>
       <h1>[HEADLINE — the outcome, in your words]</h1>
       <p class="lede">[PRODUCT NAME] is a [CATEGORY] for [SPECIFIC AUDIENCE]. [One sentence on what changes for them.]</p>
@@ -160,6 +186,7 @@
         </div>
         <p class="note">[What they get by joining, one line.] No spam.</p>
       </form>
+      </div>
 
       <figure class="shot">
         <img src="images/screenshot.png" alt="[PRODUCT NAME] product screenshot" width="1600" height="1000">
