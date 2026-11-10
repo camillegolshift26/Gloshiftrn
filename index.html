@@ -73,6 +73,8 @@
   .hero { border-top: 0; padding-top: 48px; }
   .hero .lede { font-size: 1.15rem; color: var(--muted); max-width: var(--measure); margin: 0 0 28px; }
   .hero .shot { margin-top: 40px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
+  .hero .shot.promo { width: 100%; max-width: 360px; margin-left: auto; margin-right: auto; aspect-ratio: 9 / 16; }
+  .hero .shot.promo video { display: block; width: 100%; height: 100%; object-fit: cover; }
 
   /* Waitlist form (used twice, identical) */
   .waitlist { max-width: 480px; }
@@ -161,8 +163,10 @@
         <p class="note">[What they get by joining, one line.] No spam.</p>
       </form>
 
-      <figure class="shot">
-        <img src="images/screenshot.png" alt="[PRODUCT NAME] product screenshot" width="1600" height="1000">
+      <figure class="shot promo">
+        <video src="videos/gloshift-promo.mp4" poster="images/promo-poster.jpg" width="1080" height="1920"
+               autoplay muted loop playsinline controls preload="metadata"
+               aria-label="GloShift promo video"></video>
       </figure>
     </div>
   </section>
